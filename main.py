@@ -1,7 +1,7 @@
 from grafo import Grafo
 
 def recebedados():
-    global vertices
+    # Questão 1 b:
     vertices = input()
     vertices = vertices.split(", ")
     chave = True
@@ -26,15 +26,25 @@ def recebedados():
 def main ():
 
     vertices = []
-    arestas = []
+    arestas = {}
 
+    # Questão 1 a:
     vertices = recebedados()
     g = Grafo()
     for i in range(len(vertices)):
         g.adicionaVertice(vertices[i])
-    print(g)
 
+    # Questão 
+    for i in range(len(vertices)):
+        if (i != len(vertices) - 1):
+            nomeDaAresta = 'a'+str(i+1) 
+            posAresta = str(vertices[i])+"-"+str(vertices[i+1])
+            g.adicionaAresta(nomeDaAresta, posAresta)
+            arestas[nomeDaAresta] = "("+posAresta+")"
+    for i in list(arestas.keys()):
+        print(str(i)+str(arestas[i]), end=", ")
+    print()
     return 0
     
-
+    
 main()

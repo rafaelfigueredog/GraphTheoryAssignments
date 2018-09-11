@@ -1,12 +1,12 @@
 import unittest
-from roteiro import *
+# from roteiro import *
 
 class TestGrafo(unittest.TestCase):
 
     def setUp(self):
         # Grafo da Paraíba
         self.g_p = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-
+        
         # Grafo da Paraíba sem arestas paralelas
         self.g_p_sem_paralelas = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1': 'J-C', 'a3': 'C-E', 'a4': 'C-P', 'a6': 'C-M', 'a7': 'C-T', 'a8': 'M-T', 'a9': 'T-Z'})
 

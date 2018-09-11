@@ -121,34 +121,3 @@ class Grafo:
                 grafo_str += ", "
 
         return grafo_str
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 from grafo import Grafo
 
-def recebedados():
+def recebeVetices():
     # Questão 1 (A, D):
     vertices = input()
     vertices = vertices.split(", ")
@@ -20,21 +20,34 @@ def recebedados():
     if (chave == False):
         print("Por favor, siga o modelo: V1, V2, V3, ... Vn")
         print("Apenas caracteres ou array de caracteres do alfabeto em caixa alta serão aceitos: A-Z ")
-        vertices = recebedados()
+        vertices = recebeVetices()
    
     return vertices
 
+def recebeArestas(vertices):
+
+    print(vertices, "\n")
+    n = int(input("Numero de arestas:"))
+    conjArestas = []
+    print("Digite os vertices separados por ""-""")
+    for i in range(n):
+        aresta = input()
+        conjArestas.append(aresta)
+    
+    print(conjArestas)
+    pass 
 def naoAdjacentes(vertices, arestas):
 
     return 0
 
 def main ():
 
+    nArestas = 0;
     vertices = []
     arestas = {}
 
     # Questão 1 A:
-    vertices = recebedados()
+    vertices = recebeVetices()
     g = Grafo()
     for i in range(len(vertices)):
         g.adicionaVertice(vertices[i])
@@ -49,10 +62,9 @@ def main ():
     for i in list(arestas.keys()):
         print(str(i)+str(arestas[i]), end=", ")
     print()
-    print(arestas)
-    return 0
 
+    listArestas  = recebeArestas(vertices) 
+    return 0
     
-    
-    
+
 main()

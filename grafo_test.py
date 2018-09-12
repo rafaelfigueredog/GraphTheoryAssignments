@@ -1,5 +1,5 @@
 import unittest
-# from roteiro import *
+from roteiro import *
 
 class TestGrafo(unittest.TestCase):
 

@@ -1,5 +1,6 @@
 from grafo import Grafo
 from itertools import product
+from itertools import permutations
 
 def vertices_nao_adjacentes(g: Grafo):
     possibilidades = []
@@ -61,6 +62,23 @@ def arestas_sobre_vertice(g: Grafo, vetice):
     
     return arestasNoVertice
 
-def main(): 
+def eh_completo(g: Grafo):
+    #condição1
+    N = len(g.N.values())
+    A = (N*(N-1))/2
+    if (len(g.A) < A):
+        return False
+    else:
+        return True
+
+    
+
+def main():
+
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    print(g.N)
+    eh_completo(g)
+
+    return 0
+
 main()

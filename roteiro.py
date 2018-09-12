@@ -24,6 +24,21 @@ def ha_laco(g: Grafo):
     else:
         return False
 
+def arestasParalelas(g: Grafo):
+    totalarestas = len(g.A.values())
+    conjArestas = list(g.A.values())
+    if ( totalarestas != 0 ):
+        for i in range(totalarestas):
+            ligacao = conjArestas[i]
+            procligacao = ligacao[::-1]
+            for j in conjArestas:
+                if (j == procligacao):
+                    return True
+        return False
+    else:
+        return False
+
+
 
 def main(): 
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
@@ -34,4 +49,5 @@ def main():
     else:
         print("NÃO")
 
+    arestasParalelas(g)
 main()

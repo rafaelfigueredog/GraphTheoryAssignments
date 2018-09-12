@@ -47,17 +47,20 @@ def grau(g: Grafo, vetice):
             ligacao = conjArestas[i].split("-")
             if (vetice in ligacao):
                 contador += 1
-                
+
     return contador
+
+def arestas_sobre_vertice(g: Grafo, vetice):
+
+    totalarestas = len(g.A.values())
+    arestasNoVertice = []
+    if (totalarestas != 0):
+        for i in list(g.A.keys()):
+            if (vetice in g.A[i].split("-")):
+                arestasNoVertice.append(i)
+    
+    return arestasNoVertice
+
 def main(): 
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    vertices_nao_adjacentes(g)
-    # teste 1
-    if (ha_laco(g)):
-        print("SIM")
-    else:
-        print("NÃO")
-
-    arestasParalelas(g)
-    print(grau(g, 'P'))
 main()

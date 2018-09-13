@@ -6,7 +6,7 @@ class TestGrafo(unittest.TestCase):
     def setUp(self):
         # Grafo da Paraíba
         self.g_p = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-        
+
         # Grafo da Paraíba sem arestas paralelas
         self.g_p_sem_paralelas = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1': 'J-C', 'a3': 'C-E', 'a4': 'C-P', 'a6': 'C-M', 'a7': 'C-T', 'a8': 'M-T', 'a9': 'T-Z'})
 
@@ -16,7 +16,7 @@ class TestGrafo(unittest.TestCase):
         self.g_c3 = Grafo(['J'])
 
         # Grafos com laco
-        self.g_l1 = Grafo(['A', 'B', 'C', 'D'], {'a1':'A-A', 'a2':'B-A'})
+        self.g_l1 = Grafo(['A', 'B', 'C', 'D'], {'a1':'A-A', 'a2':'B-A', 'a3':'A-A'})
         self.g_l2 = Grafo(['A', 'B', 'C', 'D'], {'a1':'A-B', 'a2':'B-B', 'a3':'B-A'})
         self.g_l3 = Grafo(['A', 'B', 'C', 'D'], {'a1':'C-A', 'a2':'C-C', 'a3':'D-D'})
         self.g_l4 = Grafo(['D'], {'a2':'D-D'})
@@ -24,6 +24,7 @@ class TestGrafo(unittest.TestCase):
 
     def test_vertices_nao_adjacentes(self):
         self.assertEqual(vertices_nao_adjacentes(self.g_p), ['J-J', 'J-E', 'J-P', 'J-M', 'J-T', 'J-Z', 'C-C', 'C-Z', 'E-J', 'E-E', 'E-P', 'E-M', 'E-T', 'E-Z', 'P-J', 'P-E', 'P-P', 'P-M', 'P-T', 'P-Z', 'M-J', 'M-E', 'M-P', 'M-M', 'M-Z', 'T-J', 'T-E', 'T-P', 'T-T', 'Z-J', 'Z-C', 'Z-E', 'Z-P', 'Z-M', 'Z-Z'])
+
         self.assertEqual(vertices_nao_adjacentes(self.g_p),
                          ['J-J', 'J-E', 'J-P', 'J-M', 'J-T', 'J-Z', 'C-C', 'C-Z', 'E-J', 'E-E', 'E-P', 'E-M', 'E-T',
                           'E-Z', 'P-J', 'P-E',
@@ -66,6 +67,14 @@ class TestGrafo(unittest.TestCase):
         self.assertEqual(grau(self.g_l1, 'A'), 2)
         self.assertEqual(grau(self.g_l2, 'B'), 3)
         self.assertEqual(grau(self.g_l4, 'D'), 1)
+
+    def test_arestas_ha_paralelas(self):
+        self.assertTrue(ha_paralelas(self.g_p))
+        self.assertFalse(ha_paralelas(self.g_p_sem_paralelas))
+        self.assertFalse(ha_paralelas(self.g_c))
+        self.assertFalse(ha_paralelas(self.g_c2))
+        self.assertFalse(ha_paralelas(self.g_c3))
+        self.assertTrue(ha_paralelas(self.g_l1))
 
     def test_arestas_sobre_vertice(self):
         self.assertEqual(arestas_sobre_vertice(self.g_p, 'J'), ['a1'])

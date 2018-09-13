@@ -3,15 +3,12 @@ from itertools import product
 from itertools import permutations
 
 def vertices_nao_adjacentes(g: Grafo):
-    possibilidades = []
+    naoAdjacentes = []
     genArestas = product(g.N, repeat=2)
     for subset in genArestas:
         aresta =  subset[0] + "-" + subset[1]
-        possibilidades.append(aresta)
-    naoAdjacentes = []
-    for i in possibilidades:
-        if (i not in g.A.values()):
-            naoAdjacentes.append(i)
+        if ((aresta not in list(g.A.values())) and (aresta[::-1] not in list(g.A.values()))):
+            naoAdjacentes.append(aresta)
     return naoAdjacentes
 
 def ha_laco(g: Grafo):
@@ -25,7 +22,7 @@ def ha_laco(g: Grafo):
     else:
         return False
 
-def arestasParalelas(g: Grafo):
+def ha_paralelas(g: Grafo):
     totalarestas = len(g.A.values())
     conjArestas = list(g.A.values())
     if ( totalarestas != 0 ):
@@ -44,11 +41,15 @@ def grau(g: Grafo, vetice):
     contador = 0
     if ( totalarestas != 0 and (vetice in g.N)):
         conjArestas = list(g.A.values())
+        chave = True
         for i in range(totalarestas):
             ligacao = conjArestas[i].split("-")
-            if (vetice in ligacao):
+            coeficiente = ligacao.count(vetice)
+            if (coeficiente == 1):
                 contador += 1
-
+            elif (coeficiente == 2 and (chave) ) :
+                contador += 1
+                chave = False
     return contador
 
 def arestas_sobre_vertice(g: Grafo, vetice):
@@ -73,10 +74,13 @@ def eh_completo(g: Grafo):
 
     
 
-def main():
+""" def main():
 
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    print(g.N)
+    print(vertices_nao_adjacentes(g))
     eh_completo(g)
+    g2 = Grafo(['A', 'B', 'C', 'D'], {'a1':'A-A', 'a2':'B-A', 'a3':'A-A'})
+    print(grau(g2, 'A'))
 
-main()
+
+main() """

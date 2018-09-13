@@ -41,17 +41,11 @@ def grau(g: Grafo, vetice):
     contador = 0
     if ( totalarestas != 0 and (vetice in g.N)):
         conjArestas = list(g.A.values())
-        chave = True
         for i in range(totalarestas):
             ligacao = conjArestas[i].split("-")
-            coeficiente = ligacao.count(vetice)
-            if (coeficiente == 1):
-                contador += 1
-            elif (coeficiente == 2 and (chave) ) :
-                contador += 1
-                chave = False
+            if (vetice in ligacao):
+                contador += 1           
     return contador
-
 def arestas_sobre_vertice(g: Grafo, vetice):
 
     totalarestas = len(g.A.values())
@@ -71,16 +65,3 @@ def eh_completo(g: Grafo):
         return False
     else:
         return True
-
-    
-
-""" def main():
-
-    g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    print(vertices_nao_adjacentes(g))
-    eh_completo(g)
-    g2 = Grafo(['A', 'B', 'C', 'D'], {'a1':'A-A', 'a2':'B-A', 'a3':'A-A'})
-    print(grau(g2, 'A'))
-
-
-main() """

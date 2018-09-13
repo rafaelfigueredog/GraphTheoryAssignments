@@ -28,9 +28,9 @@ def ha_paralelas(g: Grafo):
     if ( totalarestas != 0 ):
         for i in range(totalarestas):
             ligacao = conjArestas[i]
-            procligacao = ligacao[::-1]
+            invligacao = ligacao[::-1]
             for j in conjArestas:
-                if (j == procligacao):
+                if ((j == invligacao) or (conjArestas.count(ligacao) > 1)):
                     return True
         return False
     else:
@@ -60,7 +60,7 @@ def arestas_sobre_vertice(g: Grafo, vetice):
         for i in list(g.A.keys()):
             if (vetice in g.A[i].split("-")):
                 arestasNoVertice.append(i)
-    
+        arestasNoVertice.sort()
     return arestasNoVertice
 
 def eh_completo(g: Grafo):

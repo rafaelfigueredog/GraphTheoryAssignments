@@ -64,7 +64,7 @@ class TestGrafo(unittest.TestCase):
         self.assertEqual(grau(self.g_c, 'P'), 3)
 
         # Com laço. Lembrando que cada laço conta uma única vez por vértice para cálculo do grau
-        self.assertEqual(grau(self.g_l1, 'A'), 2)
+        self.assertEqual(grau(self.g_l1, 'A'), 3)
         self.assertEqual(grau(self.g_l2, 'B'), 3)
         self.assertEqual(grau(self.g_l4, 'D'), 1)
 
@@ -77,9 +77,9 @@ class TestGrafo(unittest.TestCase):
         self.assertTrue(ha_paralelas(self.g_l1))
 
     def test_arestas_sobre_vertice(self):
-        self.assertEqual(arestas_sobre_vertice(self.g_p, 'J'), ['a1'])
-        self.assertEqual(arestas_sobre_vertice(self.g_p, 'C'), ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7'])
-        self.assertEqual(arestas_sobre_vertice(self.g_p, 'M'), ['a6', 'a8'])
+        self.assertEqual(set(arestas_sobre_vertice(self.g_p, 'J')), set(['a1']))
+        self.assertEqual(set(arestas_sobre_vertice(self.g_p, 'C')), set(['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7']))
+        self.assertEqual(set(arestas_sobre_vertice(self.g_p, 'M')), set(['a6', 'a8']))
 
     def test_eh_completo(self):
         self.assertFalse(eh_completo(self.g_p))

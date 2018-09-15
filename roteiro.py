@@ -68,48 +68,50 @@ def eh_completo(g: Grafo):
 
 
 def conexo(g: Grafo):
+    if len(g.A) == 0:
+        return False
 
-    nVertices = len(g.N)
-    ligacoes = {}
-    for v in g.N:
-        ligacoes[v] = []
-    
-
-    for i in g.A.keys():
-        vertices = g.A[i].split("-")
-        if (vertices[0] != vertices[1]):
-            if vertices[1] not in ligacoes[vertices[0]]:
-                ligacoes[vertices[0]] += [vertices[1]]
-            if vertices[0] not in ligacoes[vertices[1]]:
-                ligacoes[vertices[1]] += [vertices[0]]
-
-    verticeMaior = str
-    nConexoes = 0
-    for i in ligacoes.keys():
-        if ( len(ligacoes[i]) > conexao ):
-            conexao = len(ligacoes[i])
-            verticeMaior = i
-    
-    if ( nConexoes == (nVertices - 1)):
-        return True
     else:
-        complementar = []
-        ncomplementar = 0
+        nVertices = len(g.N)
+        ligacoes = {}
         for v in g.N:
-            if ( (ncomplementar + nConexoes) == (nVertices - 1) ):
-                break
-            if v not in ligacoes[verticeMaior]:
-                complementar.append(v)
-                ncomplementar += 1
+            ligacoes[v] = []
+
+        for i in g.A.keys():
+            vertices = g.A[i].split("-")
+            if (vertices[0] != vertices[1]):
+                if vertices[1] not in ligacoes[vertices[0]]:
+                    ligacoes[vertices[0]] += [vertices[1]]
+                if vertices[0] not in ligacoes[vertices[1]]:
+                    ligacoes[vertices[1]] += [vertices[0]]
+
+        verticeMaior = str
+        nConexoes = 0
+        for i in ligacoes.keys():
+            if ( len(ligacoes[i]) > nConexoes ):
+                nConexoes = len(ligacoes[i])
+                verticeMaior = i
         
-    return
+        if ( nConexoes == (nVertices - 1)):
+            return True
+        else:
+            complementar = []
+            nFaltas = 0
+            for v in g.N:
+                if ( (nFaltas + nConexoes) == (nVertices - 1) ):
+                    break
+                if v not in ligacoes[verticeMaior]:
+                    complementar.append(v)
+                    nFaltas += 1
+            
+            for v in ligacoes[verticeMaior]:
+                if (nFaltas == 0):
+                    return True
+                nFaltas -= ligacoes[v].count(complementar[nFaltas-1])        
+        return False
 
 def main():
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    conexo(g)
-
-
-
-
+    print(conexo(g))
 
 main()

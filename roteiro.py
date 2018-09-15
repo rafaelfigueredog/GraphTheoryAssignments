@@ -65,3 +65,8 @@ def eh_completo(g: Grafo):
         return False
     else:
         return True
+
+
+def conexo(g: Grafo):
+
+    pass

@@ -46,6 +46,7 @@ def grau(g: Grafo, vetice):
             if (vetice in ligacao):
                 contador += 1           
     return contador
+    
 def arestas_sobre_vertice(g: Grafo, vetice):
 
     totalarestas = len(g.A.values())
@@ -66,11 +67,9 @@ def eh_completo(g: Grafo):
     else:
         return True
 
-
 def conexo(g: Grafo):
-    if len(g.A) == 0:
+    if ( (len(g.A) == 0) or (len(g.A) < (len(g.N) - 1)) ):
         return False
-
     else:
         nVertices = len(g.N)
         ligacoes = {}
@@ -100,6 +99,8 @@ def conexo(g: Grafo):
             for v in g.N:
                 if ( (nFaltas + nConexoes) == (nVertices - 1) ):
                     break
+                if (v == verticeMaior):
+                    continue
                 if v not in ligacoes[verticeMaior]:
                     complementar.append(v)
                     nFaltas += 1
@@ -107,11 +108,16 @@ def conexo(g: Grafo):
             for v in ligacoes[verticeMaior]:
                 if (nFaltas == 0):
                     return True
-                nFaltas -= ligacoes[v].count(complementar[nFaltas-1])        
-        return False
+                nFaltas -= ligacoes[v].count(complementar[nFaltas-1]) # nesse ponto, não haverá repeticões.
+        
+        if (nFaltas == 0):
+            return True
+        else:
+            return False
 
 def main():
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    g_l1 = Grafo(['A', 'B', 'C', 'D'], {'a1':'A-B', 'a2':'B-C', 'a3':'C-A'})
     print(conexo(g))
-
+    print(conexo(g_l1))
 main()

@@ -80,7 +80,7 @@ def conexo(g: Grafo):
             lenligacoes[v] = 0
 
         nConexoes = 0;
-        verticeMaior = ''
+        verticeMaior = 'default'
         for i in g.A.keys():
 
             vertices = g.A[i].split("-")
@@ -109,6 +109,8 @@ def conexo(g: Grafo):
         
         if ( nConexoes == (nVertices - 1)):
             return True
+        elif (verticeMaior == 'default'):
+            return False
         else:
             complementar = []
             nFaltas = 0
@@ -131,9 +133,9 @@ def conexo(g: Grafo):
         else:
             return False
 
-""" def main():
-    g = Grafo(['J', 'C', 'E', 'D' ], {'a1':'J-C', 'a2':'C-E', 'a3':'E-D'})
-    g_l1 = Grafo(['A'])
-    print(conexo(g))
+#def main():
+    #g = Grafo(['J', 'C', 'E', 'D' ], {'a1':'J-C', 'a2':'C-E', 'a3':'E-D'})
+#    g = Grafo(['A'], {'a1':'A-A'})
+#    print(conexo(g))
     
-main() """
+#main()

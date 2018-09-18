@@ -73,23 +73,39 @@ def conexo(g: Grafo):
     else:
         nVertices = len(g.N)
         ligacoes = {}
+        lenligacoes = {}
+        
         for v in g.N:
             ligacoes[v] = []
+            lenligacoes[v] = 0
 
+        nConexoes = 0;
+        verticeMaior = ''
         for i in g.A.keys():
-            vertices = g.A[i].split("-")
-            if (vertices[0] != vertices[1]):
-                if vertices[1] not in ligacoes[vertices[0]]:
-                    ligacoes[vertices[0]] += [vertices[1]]
-                if vertices[0] not in ligacoes[vertices[1]]:
-                    ligacoes[vertices[1]] += [vertices[0]]
 
-        verticeMaior = str
-        nConexoes = 0
-        for i in ligacoes.keys():
-            if ( len(ligacoes[i]) > nConexoes ):
-                nConexoes = len(ligacoes[i])
-                verticeMaior = i
+            vertices = g.A[i].split("-")
+
+            if (vertices[0] != vertices[1]):
+
+                if vertices[1] not in ligacoes[vertices[0]]:
+
+                    ligacoes[vertices[0]] += [vertices[1]]
+                    lenligacoes[vertices[0]] += 1
+                    valortemporario1 = lenligacoes[vertices[0]]
+
+                    if valortemporario1 > nConexoes:
+                        nConexoes = valortemporario1
+                        verticeMaior = vertices[0]
+
+                if vertices[0] not in ligacoes[vertices[1]]:
+
+                    ligacoes[vertices[1]] += [vertices[0]]
+                    lenligacoes[vertices[1]] += 1
+                    valortemporario2 = lenligacoes[vertices[1]]
+
+                    if valortemporario2 > nConexoes:
+                        nConexoes = valortemporario2
+                        verticeMaior = vertices[1]
         
         if ( nConexoes == (nVertices - 1)):
             return True
@@ -117,7 +133,8 @@ def conexo(g: Grafo):
 
 def main():
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    g_l1 = Grafo(['A', 'B', 'C', 'D'], {'a1':'A-B', 'a2':'B-C', 'a3':'C-A'})
+    g_l1 = Grafo(['A'])
     print(conexo(g))
     print(conexo(g_l1))
+    
 main()

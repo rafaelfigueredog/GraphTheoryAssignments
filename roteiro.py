@@ -131,10 +131,9 @@ def conexo(g: Grafo):
         else:
             return False
 
-def main():
-    g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+""" def main():
+    g = Grafo(['J', 'C', 'E', 'D' ], {'a1':'J-C', 'a2':'C-E', 'a3':'E-D'})
     g_l1 = Grafo(['A'])
     print(conexo(g))
-    print(conexo(g_l1))
     
-main()
+main() """

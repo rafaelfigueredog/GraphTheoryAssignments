@@ -106,9 +106,11 @@ def conexo(g: Grafo):
                     if valortemporario2 > nConexoes:
                         nConexoes = valortemporario2
                         verticeMaior = vertices[1]
-        
+                        
         if ( nConexoes == (nVertices - 1)):
             return True
+        elif ((verticeMaior == False) or list(lenligacoes.values()).count(0) > 0):
+            return False
         else:
             complementar = []
             nFaltas = 0
@@ -131,9 +133,9 @@ def conexo(g: Grafo):
         else:
             return False
 
-""" def main():
-    g = Grafo(['J', 'C', 'E', 'D' ], {'a1':'J-C', 'a2':'C-E', 'a3':'E-D'})
-    g_l1 = Grafo(['A'])
-    print(conexo(g))
+def main():
+    #g = Grafo(['J', 'C', 'E', 'D' ], {'a1':'J-C', 'a2':'C-E', 'a3':'E-D'})
+    g_p = Grafo(['J', 'C', 'E', 'P', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a9':'T-Z'})
+    print(conexo(g_p))
     
-main() """
+main()

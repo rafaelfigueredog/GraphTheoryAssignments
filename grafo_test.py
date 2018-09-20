@@ -21,6 +21,7 @@ class TestGrafo(unittest.TestCase):
         self.g_l3 = Grafo(['A', 'B', 'C', 'D'], {'a1':'C-A', 'a2':'C-C', 'a3':'D-D'})
         self.g_l4 = Grafo(['D'], {'a2':'D-D'})
         self.g_l5 = Grafo(['C', 'D'], {'a2':'D-C', 'a3':'C-C'})
+        self.g_l6 = Grafo(['C', 'D'], {'a2':'D-D', 'a3':'C-C'})
 
     def test_vertices_nao_adjacentes(self):
         self.assertEqual(vertices_nao_adjacentes(self.g_p), ['J-J', 'J-E', 'J-P', 'J-M', 'J-T', 'J-Z', 'C-C', 'C-Z', 'E-J', 'E-E', 'E-P', 'E-M', 'E-T', 'E-Z', 'P-J', 'P-E', 'P-P', 'P-M', 'P-T', 'P-Z', 'M-J', 'M-E', 'M-P', 'M-M', 'M-Z', 'T-J', 'T-E', 'T-P', 'T-T', 'Z-J', 'Z-C', 'Z-E', 'Z-P', 'Z-M', 'Z-Z'])
@@ -102,5 +103,6 @@ class TestGrafo(unittest.TestCase):
         self.assertFalse(conexo(self.g_l1))
         self.assertFalse(conexo(self.g_l2))
         self.assertFalse(conexo(self.g_l3))
+        self.assertFalse(conexo(self.g_l6))
         self.assertTrue(conexo(self.g_l4))
         self.assertTrue(conexo(self.g_l5))

@@ -1,5 +1,18 @@
 from grafo_adj_nao_dir import *
+from grafo import Grafo
 
+def convertToMatrizAdj(g: Grafo):
+    N = g.N
+    m = []
+    coeficiente = 0
+    for i in range(len(N)):
+        lenVertices = len(N)
+        linha = (coeficiente*['-']) + (lenVertices-coeficiente)*[0]
+        coeficiente+=1
+        m.append(linha)
+    
+    
+    return N, m;
 
 def vertices_nao_adjacentes(g: Grafo):    
 
@@ -32,5 +45,6 @@ pass
 
 def main():
 
-    
+    g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    N, m = convertToMatrizAdj(g)
 main()

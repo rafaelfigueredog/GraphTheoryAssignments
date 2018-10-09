@@ -57,14 +57,19 @@ def ha_paralelas(g: Grafo):
     return
 
 def grau(g: Grafo, vetice):
-    idx = g.N.index(vetice)
-    grau = 0
-    for i in range(idx, len(g.M[idx])):
-        grau += g.M[idx][i]
+    
+    if ( len(g.N) == 0 ):
+        return 0
+    else:
+        grau = 0
+        idx = g.N.index(vetice)
+        for i in range( idx, len(g.M[idx]) ):
+            grau += g.M[idx][i]
+
     return grau
 
 def arestas_sobre_vertice(g: Grafo, vetice):
-
+    
     return
 
 def eh_completo(g: Grafo):

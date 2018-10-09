@@ -138,5 +138,6 @@ def main():
     g_p = Grafo(['J', 'C', 'E', 'P', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a9':'T-Z'})
     g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-C', 'a3':'C-C', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
     print(vertices_nao_adjacentes(g))
+    print(arestas_sobre_vertice(g, "J"))
     
 main()

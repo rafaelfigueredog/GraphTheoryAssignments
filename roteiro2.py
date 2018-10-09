@@ -1,6 +1,7 @@
 from grafo_adj_nao_dir import *
 from grafo import Grafo as G
 
+
 def convertToMatrizAdj(g: G):
     N = g.N
     m = []
@@ -32,7 +33,6 @@ def vertices_nao_adjacentes(g: Grafo):
         idxvertice = 0
         idxfinal = len(g.N)
         naoAdjacentes = ''
-        listaNaoAdjacentes = []
         for i in range(len(g.M)):
             for j in range(idxvertice, idxfinal):
                 if (g.M[i][j] == 0):
@@ -53,7 +53,20 @@ def ha_laco(g: Grafo):
     return False
 
 def ha_paralelas(g: Grafo):
-    
+
+    if ( len(g.N) == 0 ): 
+        return False
+    else:
+        idxvertice = 0
+        idxfinal = len(g.N)
+        naoAdjacentes = ''
+        for i in range(len(g.M)):
+            for j in range(idxvertice, idxfinal):
+                if (g.M[i][j] > 1):
+                    return True
+            idxvertice += 1
+    return False
+
     return
 
 def grau(g: Grafo, vetice):
@@ -68,13 +81,24 @@ def grau(g: Grafo, vetice):
 
     return grau
 
-def arestas_sobre_vertice(g: Grafo, vetice):
-    
-    return
+""" def arestas_sobre_vertice(g: Grafo, vetice):
+
+    return """
 
 def eh_completo(g: Grafo):
-
-    return
+    
+    if ( len(g.N) == 0 ): 
+        return listaNaoAdjacentes
+    else:
+        idxvertice = 1
+        idxfinal = len(g.N)
+        naoAdjacentes = ''
+        for i in range(len(g.M)):
+            for j in range(idxvertice, idxfinal):
+                if (g.M[i][j] == 0):
+                    return False
+            idxvertice += 1
+    return True
 
 def conexo(g: Grafo):
 
@@ -84,12 +108,18 @@ pass
 def main():
 
     g = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-C', 'a3':'C-C', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    gc = G(['J', 'C', 'E', 'P'], {'a1':'J-C', 'a3':'J-E', 'a4':'J-P', 'a6':'C-E', 'a7':'C-P', 'a8':'E-P'})
+    Ngc, mgc = convertToMatrizAdj(gc)
+    grafoMatrizCompleto = Grafo(Ngc, mgc)
     N, m = convertToMatrizAdj(g)
     grafoMatriz = Grafo(N,m)
     print(ha_laco(grafoMatriz))
     print()
     print(grafoMatriz)
     print(vertices_nao_adjacentes(grafoMatriz))
-    print(grau(grafoMatriz, "Z"))
+    print(grau(grafoMatriz, "M"))
+    print(ha_paralelas(grafoMatriz))
+    print(grafoMatrizCompleto)
+    print(eh_completo(grafoMatrizCompleto))
 
 main()

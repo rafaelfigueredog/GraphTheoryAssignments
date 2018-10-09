@@ -25,20 +25,21 @@ def convertToMatrizAdj(g: G):
     return N, m
 
 def vertices_nao_adjacentes(g: Grafo):
-
+    listaNaoAdjacentes = []
     if ( len(g.N) == 0 ): 
-        return False
+        return listaNaoAdjacentes
     else:
-        
         idxvertice = 0
         idxfinal = len(g.N)
         naoAdjacentes = ''
-
+        listaNaoAdjacentes = []
         for i in range(len(g.M)):
             for j in range(idxvertice, idxfinal):
                 if (g.M[i][j] == 0):
-                    naoAdjacentes += g.N[i] + "-" + g.N[j] + ", "
-    return naoAdjacentes
+                    naoAdjacentes = g.N[i] + "-" + g.N[j]
+                    listaNaoAdjacentes.append(naoAdjacentes)
+            idxvertice += 1
+    return listaNaoAdjacentes
 
 def ha_laco(g: Grafo):
 
@@ -51,14 +52,16 @@ def ha_laco(g: Grafo):
 
     return False
 
-
 def ha_paralelas(g: Grafo):
     
     return
 
 def grau(g: Grafo, vetice):
-
-    return
+    idx = g.N.index(vetice)
+    grau = 0
+    for i in range(idx, len(g.M[idx])):
+        grau += g.M[idx][i]
+    return grau
 
 def arestas_sobre_vertice(g: Grafo, vetice):
 
@@ -82,5 +85,6 @@ def main():
     print()
     print(grafoMatriz)
     print(vertices_nao_adjacentes(grafoMatriz))
+    print(grau(grafoMatriz, "Z"))
 
 main()

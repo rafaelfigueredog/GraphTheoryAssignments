@@ -24,23 +24,33 @@ def convertToMatrizAdj(g: G):
 
     return N, m
 
-def vertices_nao_adjacentes(g: Grafo):    
+def vertices_nao_adjacentes(g: Grafo):
 
-    return
+    if ( len(g.N) == 0 ): 
+        return False
+    else:
+        
+        idxvertice = 0
+        idxfinal = len(g.N)
+        naoAdjacentes = ''
+
+        for i in range(len(g.M)):
+            for j in range(idxvertice, idxfinal):
+                if (g.M[i][j] == 0):
+                    naoAdjacentes += g.N[i] + "-" + g.N[j] + ", "
+    return naoAdjacentes
 
 def ha_laco(g: Grafo):
 
-    if (len(g.N) == 0)
+    if (len(g.N) == 0):
         return False
     else:
-        for i in range(len(M)):
-            for j in range(len(i)):
-                if (i != j)
-                    continue
-                else:
-                    pass
+        for i in range(len(g.N)):
+            if (g.M[i][i] > 0):
+                return True
 
-    return
+    return False
+
 
 def ha_paralelas(g: Grafo):
     
@@ -65,8 +75,12 @@ pass
 
 def main():
 
-    g = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    N, M = convertToMatrizAdj(g)
-    grafoMatriz = Grafo(N, M)
-    
+    g = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-C', 'a3':'C-C', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    N, m = convertToMatrizAdj(g)
+    grafoMatriz = Grafo(N,m)
+    print(ha_laco(grafoMatriz))
+    print()
+    print(grafoMatriz)
+    print(vertices_nao_adjacentes(grafoMatriz))
+
 main()

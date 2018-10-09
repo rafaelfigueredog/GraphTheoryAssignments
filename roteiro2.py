@@ -1,7 +1,7 @@
 from grafo_adj_nao_dir import *
-from grafo import Grafo
+from grafo import Grafo as G
 
-def convertToMatrizAdj(g: Grafo):
+def convertToMatrizAdj(g: G):
     N = g.N
     m = []
     coeficiente = 0
@@ -30,6 +30,16 @@ def vertices_nao_adjacentes(g: Grafo):
 
 def ha_laco(g: Grafo):
 
+    if (len(g.N) == 0)
+        return False
+    else:
+        for i in range(len(M)):
+            for j in range(len(i)):
+                if (i != j)
+                    continue
+                else:
+                    pass
+
     return
 
 def ha_paralelas(g: Grafo):
@@ -55,8 +65,8 @@ pass
 
 def main():
 
-    g = Grafo(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    N, m = convertToMatrizAdj(g)
-    print(g2)
-
+    g = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    N, M = convertToMatrizAdj(g)
+    grafoMatriz = Grafo(N, M)
+    
 main()

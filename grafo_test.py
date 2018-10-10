@@ -1,7 +1,7 @@
 import unittest
 from roteiro2 import *
 from grafo import Grafo as G
-from grafo_adj_nao_dir import Grafo
+
 
 
 class TestGrafo(unittest.TestCase):

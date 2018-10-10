@@ -74,6 +74,8 @@ def ha_paralelas(g: Grafo):
 
 def grau(g: Grafo, vetice):
     
+    print(Grafo)
+
     if ( len(g.N) == 0 ):
         return 0
     else:
@@ -81,6 +83,11 @@ def grau(g: Grafo, vetice):
         idx = g.N.index(vetice)
         for i in range( idx, len(g.M[idx]) ):
             grau += g.M[idx][i]
+        idxfixo = idx
+        while ( (idx - 1) >= 0 ):
+            if ( g.M[idx-1][idx] != str ):
+                grau += g.M[idx-1][idxfixo]
+            idx -= 1
 
     return grau
 
@@ -105,4 +112,18 @@ def eh_completo(g: Grafo):
 
 def conexo(g: Grafo):
 
+
+
     pass
+
+
+""" def main():
+
+    g_p = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    g_p = convertToMatrizAdj(g_p)
+
+    print(g_p)
+    print(grau(g_p,"P")) 
+
+
+main() """

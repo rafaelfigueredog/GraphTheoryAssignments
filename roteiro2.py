@@ -2,6 +2,7 @@ from grafo_adj_nao_dir import *
 from grafo import Grafo as G
 
 
+
 def convertToMatrizAdj(g: G):
     N = g.N
     m = []
@@ -23,7 +24,9 @@ def convertToMatrizAdj(g: G):
         else:
             m[indice2][indice1] += 1
 
-    return N, m
+    grafo = Grafo(N,m)
+
+    return grafo
 
 def vertices_nao_adjacentes(g: Grafo):
     listaNaoAdjacentes = []

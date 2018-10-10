@@ -105,24 +105,4 @@ def eh_completo(g: Grafo):
 
 def conexo(g: Grafo):
 
-    return 
-pass
-
-def main():
-
-    g = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-C', 'a3':'C-C', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    gc = G(['J', 'C', 'E', 'P'], {'a1':'J-C', 'a3':'J-E', 'a4':'J-P', 'a6':'C-E', 'a7':'C-P', 'a8':'E-P'})
-    Ngc, mgc = convertToMatrizAdj(gc)
-    grafoMatrizCompleto = Grafo(Ngc, mgc)
-    N, m = convertToMatrizAdj(g)
-    grafoMatriz = Grafo(N,m)
-    print(ha_laco(grafoMatriz))
-    print()
-    print(grafoMatriz)
-    print(vertices_nao_adjacentes(grafoMatriz))
-    print(grau(grafoMatriz, "M"))
-    print(ha_paralelas(grafoMatriz))
-    print(grafoMatrizCompleto)
-    print(eh_completo(grafoMatrizCompleto))
-
-main()
+    pass

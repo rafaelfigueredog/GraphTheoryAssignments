@@ -1,6 +1,6 @@
 from grafo_adj_nao_dir import *
 from grafo import Grafo as G
-
+import roteiro1 as rt
 
 
 def convertToMatrizAdj(g: G):
@@ -117,13 +117,15 @@ def conexo(g: Grafo):
     pass
 
 
-""" def main():
+def main():
 
     g_p = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
+    print("\n", rt.vertices_nao_adjacentes(g_p))
     g_p = convertToMatrizAdj(g_p)
-
+    print("\n")
     print(g_p)
-    print(grau(g_p,"P")) 
+    print("\n")
+    print(vertices_nao_adjacentes(g_p))
+    
 
-
-main() """
+main()

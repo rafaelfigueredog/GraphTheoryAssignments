@@ -140,4 +140,4 @@ def main():
     print(vertices_nao_adjacentes(g))
     print(arestas_sobre_vertice(g, "J"))
     
-main()
+#main()

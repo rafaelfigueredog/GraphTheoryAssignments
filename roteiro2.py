@@ -36,7 +36,13 @@ def vertices_nao_adjacentes(g: Grafo):
         idxvertice = 0
         idxfinal = len(g.N)
         naoAdjacentes = ''
-        for i in range(len(g.M)):
+        for i in range(idxfinal):
+            idxcoluna = 0
+            while (idxcoluna != idxvertice):
+                if (g.M[idxcoluna][idxvertice] == 0):
+                    naoAdjacentes = g.N[idxvertice] + "-" + g.N[idxcoluna]
+                    listaNaoAdjacentes.append(naoAdjacentes)
+                idxcoluna += 1
             for j in range(idxvertice, idxfinal):
                 if (g.M[i][j] == 0):
                     naoAdjacentes = g.N[i] + "-" + g.N[j]
@@ -73,8 +79,6 @@ def ha_paralelas(g: Grafo):
     return
 
 def grau(g: Grafo, vetice):
-    
-    print(Grafo)
 
     if ( len(g.N) == 0 ):
         return 0
@@ -128,4 +132,4 @@ def main():
     print(vertices_nao_adjacentes(g_p))
     
 
-main()
+#main()

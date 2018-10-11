@@ -98,10 +98,10 @@ class TestGrafo(unittest.TestCase):
         self.assertFalse(ha_paralelas(self.g_c3))
         self.assertTrue(ha_paralelas(self.g_l1))
 
-    """ def test_arestas_sobre_vertice(self):
+    def test_arestas_sobre_vertice(self):
         self.assertEqual(set(arestas_sobre_vertice(self.g_p, 'J')), set(['J-C']))
         self.assertEqual(set(arestas_sobre_vertice(self.g_p, 'C')), set(['J-C', 'C-E', 'C-E', 'C-P', 'C-P', 'C-M', 'C-T']))
-        self.assertEqual(set(arestas_sobre_vertice(self.g_p, 'M')), set(['C-M', 'M-T'])) """
+        self.assertEqual(set(arestas_sobre_vertice(self.g_p, 'M')), set(['C-M', 'M-T']))
 
     def test_eh_completo(self):
         self.assertFalse(eh_completo(self.g_p))

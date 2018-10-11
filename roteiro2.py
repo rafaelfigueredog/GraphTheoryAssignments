@@ -106,9 +106,9 @@ def arestas_sobre_vertice(g: Grafo, vetice):
         idxfinal = len(g.N)
         Adjacentes = ''
         while (idxcoluna != idxvertice):
-            if (g.M[idxcoluna][idxvertice] == 1):
-                Adjacentes = g.N[idxvertice] + "-" + g.N[idxcoluna]
-                ArestasNoVertice.append(Adjacentes)
+            if (g.M[idxcoluna][idxvertice] > 0):
+                Adjacentes = g.N[idxcoluna] + "-" + g.N[idxvertice]
+                ArestasNoVertice += g.M[idxcoluna][idxvertice] * [Adjacentes]
             idxcoluna += 1
         for j in range(idxvertice, idxfinal):
             if (g.M[idxvertice][j] > 0):
@@ -147,7 +147,7 @@ def main():
     print("\n")
     print(g_p)
     print("\n")
-    print(arestas_sobre_vertice(g_p, "M"))
+    print(arestas_sobre_vertice(g_p, "C"))
   
     
 

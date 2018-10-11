@@ -133,11 +133,20 @@ def eh_completo(g: Grafo):
             idxvertice += 1
     return True
 
-def conexo(g: Grafo):
+""" def conexo(g: Grafo):
 
+    nligacoes = {}
+    maior = 0
+    for i in g.N:
+        grauVertice = grau(g,i)
+        nligacoes[i] = grauVertice
+        if ( grauVertice > maior ):
+            maior = grauVertice
+    
+    for i in nligacoes.items():
+        print(i)
 
-
-    pass
+    return nligacoes """
 
 
 def main():
@@ -147,7 +156,7 @@ def main():
     print("\n")
     print(g_p)
     print("\n")
-    print(arestas_sobre_vertice(g_p, "C"))
+    conexo(g_p)
   
     
 

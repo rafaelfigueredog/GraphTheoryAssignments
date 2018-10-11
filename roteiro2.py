@@ -95,9 +95,28 @@ def grau(g: Grafo, vetice):
 
     return grau
 
-""" def arestas_sobre_vertice(g: Grafo, vetice):
+def arestas_sobre_vertice(g: Grafo, vetice):
 
-    return """
+    ArestasNoVertice = []
+    if ( len(g.N) == 0 ): 
+        return ArestasNoVertice
+    else:
+        idxvertice = g.N.index(vetice)
+        idxcoluna = 0
+        idxfinal = len(g.N)
+        Adjacentes = ''
+        while (idxcoluna != idxvertice):
+            if (g.M[idxcoluna][idxvertice] == 1):
+                Adjacentes = g.N[idxvertice] + "-" + g.N[idxcoluna]
+                ArestasNoVertice.append(Adjacentes)
+            idxcoluna += 1
+        for j in range(idxvertice, idxfinal):
+            if (g.M[idxvertice][j] > 0):
+                Adjacentes = g.N[idxvertice] + "-" + g.N[j]
+                ArestasNoVertice += g.M[idxvertice][j] * [Adjacentes]
+        idxvertice += 1
+    return ArestasNoVertice
+   
 
 def eh_completo(g: Grafo):
     
@@ -124,12 +143,12 @@ def conexo(g: Grafo):
 def main():
 
     g_p = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    print("\n", rt.vertices_nao_adjacentes(g_p))
     g_p = convertToMatrizAdj(g_p)
     print("\n")
     print(g_p)
     print("\n")
-    print(vertices_nao_adjacentes(g_p))
+    print(arestas_sobre_vertice(g_p, "M"))
+  
     
 
 #main()

@@ -104,15 +104,3 @@ def eh_completo(g: Grafo):
                     return False
             idxvertice += 1
     return True
-
-
-def main():
-
-    g_p = G(['J', 'C', 'E', 'P', 'M', 'T', 'Z'], {'a1':'J-C', 'a2':'C-E', 'a3':'C-E', 'a4':'C-P', 'a5':'C-P', 'a6':'C-M', 'a7':'C-T', 'a8':'M-T', 'a9':'T-Z'})
-    g_p = convertToMatrizAdj(g_p)
-    print("\n")
-    print(g_p)
-    print("\n")
-    conexo(g_p)
-
-#main()

@@ -1,5 +1,5 @@
 import unittest
-from roteiro2 import *
+from main import *
 from grafo import Grafo as G
 
 def convertToMatrizAdj(g: G):

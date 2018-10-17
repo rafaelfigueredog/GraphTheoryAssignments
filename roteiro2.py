@@ -1,32 +1,4 @@
 from grafo_adj_nao_dir import *
-from grafo import Grafo as G
-import roteiro1 as rt
-
-
-def convertToMatrizAdj(g: G):
-    N = g.N
-    m = []
-    coeficiente = 0
-    for i in range(len(N)):
-        lenVertices = len(N)
-        linha = (coeficiente*['-']) + (lenVertices-coeficiente)*[0]
-        coeficiente+=1
-        m.append(linha)
-    arestas = list(g.A.values())
-
-    for i in range(len(arestas)):
-        ligacao = arestas[i].split("-")
-        indice1 = N.index(ligacao[0])
-        indice2 = N.index(ligacao[1])
-
-        if (indice1 <= indice2): 
-            m[indice1][indice2] += 1
-        else:
-            m[indice2][indice1] += 1
-
-    grafo = Grafo(N,m)
-
-    return grafo
 
 def vertices_nao_adjacentes(g: Grafo):
     listaNaoAdjacentes = []

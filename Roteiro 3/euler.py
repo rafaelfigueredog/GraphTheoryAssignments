@@ -18,7 +18,7 @@ def grau(g: Grafo, vetice):
 
     return grau
 
-def test_caminho_euleriano(g: Grafo):
+def caminho_euleriano(g: Grafo):
 
     contGrauImpar = 0
     for i in g.N:

@@ -1,13 +1,13 @@
-from grafo_adj_nao_dir import *
+from grafo_adj_nao_dir import Grafo
 
 
-def grau(g: Grafo, vetice):
+def grau(g:Grafo, vertice):
 
     if ( len(g.N) == 0 ):
         return 0
     else:
         grau = 0
-        idx = g.N.index(vetice)
+        idx = g.N.index(vertice)
         for i in range( idx, len(g.M[idx]) ):
             grau += g.M[idx][i]
         idxfixo = idx
@@ -18,12 +18,13 @@ def grau(g: Grafo, vetice):
 
     return grau
 
+
 def caminho_euleriano(g: Grafo):
 
     contGrauImpar = 0
     for i in g.N:
-        grau = grau(g,i)
-        if ( ( grau % 2 ) != 0 ):
+        var = grau(g,i)
+        if ( ( var % 2 ) != 0 ):
             contGrauImpar += 1
 
     if (contGrauImpar == 2 or contGrauImpar == 0):

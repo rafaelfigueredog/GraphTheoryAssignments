@@ -104,3 +104,4 @@ def eh_completo(g: Grafo):
                     return False
             idxvertice += 1
     return True
+

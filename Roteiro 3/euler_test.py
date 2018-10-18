@@ -1,4 +1,5 @@
 import unittest
+from grafo_adj_nao_dir import Grafo
 from euler import *
 
 class TestEuler(unittest.TestCase):
@@ -22,9 +23,9 @@ class TestEuler(unittest.TestCase):
 
         self.g_c_e = Grafo([], [])
         for i in ['A', 'B', 'C']:
-            self.konigsberg_mod.adiciona_vertice(i)
+            self.g_c_e.adiciona_vertice(i)
         for i in ['A-B', 'B-C']:
-            self.konigsberg_mod.adiciona_aresta(i)
+            self.g_c_e.adiciona_aresta(i)
 
 
         # Grafo da Paraíba

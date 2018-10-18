@@ -2,11 +2,14 @@
     "python.unitTest.unittestArgs": [
         "-v",
         "-s",
-        ".",
+        "./__pycache__",
         "-p",
         "*test.py"
     ],
-    "python.unitTest.pyTestEnabled": false,
+    "python.unitTest.pyTestEnabled": true,
     "python.unitTest.nosetestsEnabled": false,
-    "python.unitTest.unittestEnabled": true
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.pyTestArgs": [
+        "."
+    ]
 }

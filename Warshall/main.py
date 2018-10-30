@@ -5,15 +5,13 @@ def warshall(g: Grafo):
     E = g.M.copy()
     n = len(g.N)
 
-    for i in range(1, n):
-        for j in range(1, n):
-            if E[j][i] == 1:
-                for k in range(1, n):
-                    E[j][k] = max(E[j][k],E[i][k])
-
-    
+    for i in range(n):
+        for j in range(n):
+            if E[j][i] > 0:
+                for k in range(n):
+                    if max(E[j][k], E[i][k]) != 0:
+                        E[j][k] = 1
     return E
-
 
 def main():
 
@@ -30,4 +28,4 @@ def main():
             print(E[i][j], end=" ")
         print()
 
-main()
+#main()

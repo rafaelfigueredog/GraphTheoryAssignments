@@ -1,8 +1,9 @@
 from grafo_adj import Grafo
 
+
 def warshall(g: Grafo):
 	
-    E = g.M.copy()
+    E = g.M[:]
     n = len(g.N)
 
     for i in range(n):

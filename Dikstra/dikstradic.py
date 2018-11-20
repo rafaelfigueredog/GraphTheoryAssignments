@@ -1,3 +1,4 @@
+
 def dijkstra(vertices, arestas, u, v):
     beta = {}
     phi = {}
@@ -44,3 +45,11 @@ def dijkstra(vertices, arestas, u, v):
     lista += atual
 
     return lista[::-1]
+
+
+
+vertices = ['A','B','C','D','E','F','G','H', 'I']
+arestas = {"A-B": 1, "A-C": 1, "A-I": 1, "B-F": 1, "B-H": 1, "C-D": 1,
+           "D-E": 1, "I-D": 1, "I-B": 1 ,"F-G": 1, "H-I": 1, "E-I": 1} 
+
+print(dijkstra(vertices, arestas, "A", "G"))

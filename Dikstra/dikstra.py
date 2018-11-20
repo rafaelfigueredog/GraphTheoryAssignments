@@ -87,7 +87,7 @@ def main():
     print()
     print(g_p)
 
-    print( Dijkstra(g_p, 'Y', 'T') )
+    print( Dijkstra(g_p, 'Z', 'T') )
     print()
 
 

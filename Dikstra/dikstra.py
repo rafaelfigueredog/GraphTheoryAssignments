@@ -12,7 +12,6 @@ def Dijkstra(g: Grafo, u, v):
     beta = vertLength * [float("inf")]  # distancias
     phi = vertLength * [0]  # nós abertos
     pi = vertLength * [None]  # predecessor
-    
     verticesAbertos = vertLength - 1
 
     # 2. 𝞫(u) ⇽ 0 e 𝞿(u) ⇽ 1
@@ -79,6 +78,7 @@ def Dijkstra(g: Grafo, u, v):
 
 def main():
     g_p = Grafo([], [])
+    
     for i in ['J', 'C', 'E', 'P', 'M', 'T', 'Z', 'Y']:
         g_p.adiciona_vertice(i)
     for i in ['J-C', 'C-E', 'C-P', 'C-M', 'C-T', 'E-Y', 'M-T', 'P-M', 'T-Z', 'M-Z', 'Z-Y', 'Y-P']:
@@ -86,9 +86,7 @@ def main():
     
     print()
     print(g_p)
-
-    print( Dijkstra(g_p, 'Z', 'T') )
+    print( Dijkstra(g_p, 'Z', 'T'))
     print()
-
 
 main()

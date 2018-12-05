@@ -14,8 +14,9 @@ class Grafo:
     QTDE_MAX_SEPARADOR = 1
     SEPARADOR_ARESTA = '-'
     __maior_vertice = 0
+    
 
-    def __init__(self, N=[], M=[]):
+    def __init__(self, N=[], M=[], quantidadeVertices = 0):
         '''
         Constrói um objeto do tipo Grafo. Se nenhum parâmetro for passado, cria um Grafo vazio.
         Se houver alguma aresta ou algum vértice inválido, uma exceção é lançada.
@@ -28,7 +29,9 @@ class Grafo:
             if len(v) > self.__maior_vertice:
                 self.__maior_vertice = len(v)
 
+
         self.N = N
+        self.quantidadeVertices = len(N)
 
         if len(M) != len(N):
             raise MatrizInvalidaException('A matriz passada como parâmetro não tem o tamanho correto')
@@ -161,6 +164,7 @@ class Grafo:
 
             self.N.append(v) # Adiciona vértice na lista de vértices
             self.M.append([]) # Adiciona a linha
+            self.quantidadeVertices += 1 # incrementa Quantidade de Vertices
 
             for k in range(len(self.N)):
                 if k != len(self.N) -1:

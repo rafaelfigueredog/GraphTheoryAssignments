@@ -53,7 +53,7 @@ def ha_paralelas(g: Grafo):
 def grau(g: Grafo, vetice):
 
     if ( len(g.N) == 0 ):
-        return 0
+        return None
     else:
         grau = 0
         idx = g.N.index(vetice)

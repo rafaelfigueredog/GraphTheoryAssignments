@@ -19,3 +19,7 @@ class PriorityQueue:
         item = self.items[minimo]
         self.items[minimo:minimo+1] = []
         return item
+
+    def __str__(self):
+        fila =  str(self.items)
+        return fila

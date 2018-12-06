@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from PriorityQueue import PriorityQueue
+
 class VerticeInvalidoException(Exception):
     pass
 
@@ -15,14 +17,17 @@ class Grafo:
     SEPARADOR_ARESTA = '-'
     __maior_vertice = 0
     
+    
 
-    def __init__(self, N=[], M=[], quantidadeVertices = 0):
+    def __init__(self, N=[], M=[]):
         '''
         Constrói um objeto do tipo Grafo. Se nenhum parâmetro for passado, cria um Grafo vazio.
         Se houver alguma aresta ou algum vértice inválido, uma exceção é lançada.
         :param N: Uma lista dos vértices (ou nodos) do grafo.
         :param V: Uma matriz de adjacência que guarda as arestas do grafo. Cada entrada da matriz tem um inteiro que indica a quantidade de arestas que ligam aqueles vértices
         '''
+        self.Mfila = []
+
         for v in N:
             if not(Grafo.vertice_valido(v)):
                 raise VerticeInvalidoException('O vértice ' + v + ' é inválido')
@@ -32,6 +37,7 @@ class Grafo:
 
         self.N = N
         self.quantidadeVertices = len(N)
+        self.Mfila = []
 
         if len(M) != len(N):
             raise MatrizInvalidaException('A matriz passada como parâmetro não tem o tamanho correto')
@@ -164,18 +170,22 @@ class Grafo:
 
             self.N.append(v) # Adiciona vértice na lista de vértices
             self.M.append([]) # Adiciona a linha
+            self.Mfila.append([])
             self.quantidadeVertices += 1 # incrementa Quantidade de Vertices
 
             for k in range(len(self.N)):
                 if k != len(self.N) -1:
                     self.M[k].append(0) # adiciona os elementos da coluna do vértice
+                    self.Mfila[k].append(PriorityQueue())
                     self.M[self.N.index(v)].append('-') # adiciona os elementos da linha do vértice
+                    self.Mfila[self.N.index(v)].append(())
                 else:
                     self.M[self.N.index(v)].append(0)  # adiciona um zero no último elemento da linha
+                    self.Mfila[self.N.index(v)].append(PriorityQueue())
         else:
             raise VerticeInvalidoException('O vértice ' + v + ' é inválido')
 
-    def adiciona_aresta(self, a):
+    def adiciona_aresta(self, a, peso=1):
         '''
         Adiciona uma aresta ao grafo no formato X-Y, onde X é o primeiro vértice e Y é o segundo vértice
         :param a: a aresta no formato correto
@@ -186,8 +196,10 @@ class Grafo:
             i_a2 = self.__indice_segundo_vertice_aresta(a)
             if i_a1 < i_a2:
                 self.M[i_a1][i_a2] += 1
+                self.Mfila[i_a1][i_a2].insert(peso)
             else:
                 self.M[i_a2][i_a1] += 1
+                self.Mfila[i_a2][i_a1].insert(peso)
         else:
             raise ArestaInvalidaException('A aresta {} é inválida'.format(a))
 
@@ -230,6 +242,26 @@ class Grafo:
             grafo_str += self.N[l] + ' '
             for c in range(len(self.M)):
                 grafo_str += str(self.M[l][c]) + ' '
+            grafo_str += '\n'
+
+        return grafo_str
+    
+    def imprimirComFilaDePrioridade(self):
+        espaco = ' '*(self.__maior_vertice)
+
+        grafo_str = espaco + ' '
+
+        for v in range(len(self.N)):
+            grafo_str += self.N[v]
+            if v < (len(self.N) - 1):  # Só coloca o espaço se não for o último vértice
+                grafo_str += '  '
+
+        grafo_str += '\n'
+
+        for l in range(len(self.Mfila)):
+            grafo_str += self.N[l] + ' '
+            for c in range(len(self.M)):
+                grafo_str += str(self.Mfila[l][c]) + ' '
             grafo_str += '\n'
 
         return grafo_str

@@ -20,16 +20,13 @@ def Prim(g: Grafo):
 
             # fazer o algoritimo girar
 
-
         """ idxfixo = idx
         while ( (idx - 1) >= 0 ):
             if ( g.M[idx-1][idx] != str ):
                 grau += g.M[idx-1][idxfixo]
             idx -= 1 """
 
-                  
-
-
+            
 def main():
 
     g_p = Grafo([], [])

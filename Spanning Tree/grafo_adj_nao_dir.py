@@ -17,8 +17,6 @@ class Grafo:
     SEPARADOR_ARESTA = '-'
     __maior_vertice = 0
     
-    
-
     def __init__(self, N=[], M=[]):
         '''
         Constrói um objeto do tipo Grafo. Se nenhum parâmetro for passado, cria um Grafo vazio.

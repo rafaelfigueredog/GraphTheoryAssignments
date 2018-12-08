@@ -61,8 +61,7 @@ def grau(g: Grafo, vetice):
             grau += g.M[idx][i]
         idxfixo = idx
         while ( (idx - 1) >= 0 ):
-            if ( g.M[idx-1][idx] != str ):
-                grau += g.M[idx-1][idxfixo]
+            grau += g.M[idx-1][idxfixo]
             idx -= 1
 
     return grau
@@ -87,9 +86,8 @@ def arestas_sobre_vertice(g: Grafo, vetice):
                 Adjacentes = g.N[idxvertice] + "-" + g.N[j]
                 ArestasNoVertice += g.M[idxvertice][j] * [Adjacentes]
         idxvertice += 1
-    return len(ArestasNoVertice)
+    return ArestasNoVertice
    
-
 def eh_completo(g: Grafo):
     
     if ( len(g.N) == 0 ): 
@@ -104,3 +102,4 @@ def eh_completo(g: Grafo):
                     return False
             idxvertice += 1
     return True
+

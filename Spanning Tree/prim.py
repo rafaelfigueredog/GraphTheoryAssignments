@@ -2,6 +2,7 @@ from  grafo_adj_nao_dir import Grafo
 from PriorityQueue import PriorityQueue
 import graphLibrary
 from igraph import *
+import copy
 
 def Prim(g: Grafo):
 
@@ -10,6 +11,9 @@ def Prim(g: Grafo):
     
     mst = Grafo() # mst = Spanning Tree
     mst.adiciona_vertice(g.N[0]) # adiciono vertice arbitrario na arvore
+
+    
+    matrizDoGrafo = copy.deepcopy(g.M)
 
     # calcula o grau de todos os vertices  e coloca numa lista
     # com a mesma indexação dos vertices
@@ -20,21 +24,24 @@ def Prim(g: Grafo):
     while (mst.quantidadeVertices != g.quantidadeVertices):
         arestasDaFilaPrincipal = {}
         FilaPrincipal = PriorityQueue()
-        for idx in range(mst.quantidadeVertices):
-            if (licacoesValidas[idx] == 0):
+        for Vertex in range(mst.quantidadeVertices):
+            
+            idx = Vertex
+
+            if (licacoesValidas[Vertex] == 0):
                 continue
-            for i in range( idx, len(g.M[idx]) ):
-                if (g.M[idx][i] > 0): # encontrei um vertice fora da arvore
+            for i in range( Vertex, len(g.M[Vertex]) ):
+                if (matrizDoGrafo[Vertex][i] > 0): # encontrei um vertice fora da arvore
                     v = g.N[i] # Possivel novo vertice 
                     if not (mst.existe_vertice(v)):
-                        pesoArestaEncontrada = g.Mfila[idx][i].seeFist()
-                        arestaEncontrada = g.N[idx] + '-' + g.N[i]
+                        pesoArestaEncontrada = g.Mfila[Vertex][i].seeFist()
+                        arestaEncontrada = g.N[Vertex] + '-' + g.N[i]
                         arestasDaFilaPrincipal[pesoArestaEncontrada] = arestaEncontrada
                         FilaPrincipal.insert(pesoArestaEncontrada)
         
-            idxfixo = idx
-            while ( (idx - 1) >= 0 ):
-                if (g.M[idx-1][idxfixo] > 0):
+            idxfixo = idx 
+            while ( (idx- 1) >= 0 ):
+                if (matrizDoGrafo[idx-1][idxfixo] > 0):
                     v = g.N[idx-1] # Possivel novo vertice 
                     if not (mst.existe_vertice(v)):
                         pesoArestaEncontrada = g.Mfila[idx-1][idx].seeFist()
@@ -46,10 +53,14 @@ def Prim(g: Grafo):
         menorPesoAresta = FilaPrincipal.remove()
         novoVertice = arestasDaFilaPrincipal[menorPesoAresta][-1]
         novaAresta = arestasDaFilaPrincipal[menorPesoAresta]
+        idxV1 = g.N.index(novaAresta[0])
+        idxV2 = g.N.index(novaAresta[-1])
         mst.adiciona_vertice(novoVertice)
         mst.adiciona_aresta(novaAresta, menorPesoAresta)
-        licacoesValidas[idxfixo] -= 1
-    
+        licacoesValidas[idxV1] -= 1
+        licacoesValidas[idxV2] -= 1
+        matrizDoGrafo[idxV1][idxV2] -= 1
+
     return mst
 
 
@@ -64,8 +75,8 @@ def main():
     
     for i in ['J', 'C', 'E', 'P', 'M', 'T', 'Z']:
         grafo.adiciona_vertice(i)
-    for i in ['J-C', 'C-E', 'C-P', 'C-M', 'C-T', 'M-T', 'P-M', 'T-Z', 'M-Z']:
-        grafo.adiciona_aresta(i)
+    for i in [('J-C', 3), ('C-E', 1), ('C-P', 5), ('C-M', 4), ('C-T',2), ('M-T', 3), ('P-M', 1), ('T-Z', 6), ('M-Z', 9)]:
+        grafo.adiciona_aresta( *i )
 
     print("\nOriginal\n")
     print(grafo)

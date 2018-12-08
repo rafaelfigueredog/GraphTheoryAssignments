@@ -4,7 +4,7 @@ Projeto Referente a Componente: Teoria dos Grafos IFPB
 
 ## Roteiro 1:
 
-###Exercícios básicos com grafos utilizando um dicionário como estrutura de dados; 
+#### Exercícios básicos com grafos utilizando um dicionário como estrutura de dados; 
   
   Funções Implementadas
   

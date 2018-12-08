@@ -20,6 +20,19 @@ class PriorityQueue:
         self.items[minimo:minimo+1] = []
         return item
 
+    def seeFist(self):
+        minimo = 0
+        if( self.isEmpty() ):
+            return
+        for i in range(1,len(self.items)):
+            if self.items[i] < self.items[minimo]:
+                minimo = i
+        fist = self.items[minimo]
+        return fist
+
     def __str__(self):
         fila =  str(self.items)
         return fila
+
+
+

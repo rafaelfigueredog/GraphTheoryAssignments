@@ -146,12 +146,22 @@ class Grafo:
         '''
         existe = False
         if Grafo.aresta_valida(self, a):
-            for i in range(len(self.M)):
-                for j in range(len(self.M)):
-                    if self.M[self.__indice_primeiro_vertice_aresta(a)][self.__indice_segundo_vertice_aresta(a)]:
-                        existe = True
+            
+            v1 = self.__indice_primeiro_vertice_aresta(a)
+            v2 = self.__indice_segundo_vertice_aresta(a)
 
+            if ( type(self.M[v1][v2]) == int ):
+                if self.M[v1][v2] > 0:
+                    existe = True
+
+
+            if ( type(self.M[v2][v1]) == int ):
+                if self.M[v2][v1] > 0:
+                    existe = True
+
+        
         return existe
+
 
     def adiciona_vertice(self, v):
         '''

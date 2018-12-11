@@ -2,6 +2,7 @@ from  grafo_adj_nao_dir import Grafo
 from PriorityQueue import PriorityQueue
 import graphLibrary
 import copy
+import random
 
 def Prim(g: Grafo):
 
@@ -10,7 +11,10 @@ def Prim(g: Grafo):
     
     mst = Grafo() 
     raiz = ModificacaoPrim(g)
-    mst.adiciona_vertice(g.N[raiz])
+    
+    raiz = random.randint(0, g.quantidadeVertices)
+    print(raiz, g.N[raiz])
+    mst.adiciona_vertice(g.N[4])
     
     ligacoesValidas = [0] * g.quantidadeVertices
     for i in range(g.quantidadeVertices):
@@ -45,7 +49,7 @@ def Prim(g: Grafo):
                 if (g.M[idx-1][idxfixo] > 0):
                     v = g.N[idx-1] # Possivel novo vertice
                     if not (mst.existe_vertice(v)):
-                        pesoArestaEncontrada = g.Mfila[idx-1][idx].seeFist()
+                        pesoArestaEncontrada = g.Mfila[idx-1][idxfixo].seeFist()
                         arestaEncontrada = g.N[idx-1] + '-' + g.N[idxfixo]
                         if pesoArestaEncontrada in arestasDaFilaPrincipal.keys():
                             arestasDaFilaPrincipal[pesoArestaEncontrada].append(arestaEncontrada)
@@ -76,8 +80,7 @@ def Prim(g: Grafo):
             ligacoesValidas[idxV1] -= 1
             ligacoesValidas[idxV2] -= 1
 
-        
-
+    
     return mst
 
 def ModificacaoPrim(g: Grafo):

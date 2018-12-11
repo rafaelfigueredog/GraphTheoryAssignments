@@ -2,6 +2,13 @@ from grafo_adj_nao_dir import Grafo
 from PriorityQueue import PriorityQueue
 import copy
 
+
+# 1. Determine the edges that will be sorted
+# 2. Determine the number of box and the range of each box
+# 3. Insert edges into the appropriate box (box with range corresponding to the edge weight)
+# 3. Inside the box, sort the edges using bubble sort (I don't going do this)
+
+ 
 def kruskall(g: Grafo):
 
     matrizDoGrafo = copy.deepcopy(g.M)

@@ -11,14 +11,11 @@ def Prim(g: Grafo):
     
     mst = Grafo() 
 
-    # Modificação
-    raiz = ModificacaoPrim(g)
-    print("Vertice Inicial: " + g.N[raiz] + "\n")    
-
     
-    """ # Vertice Aleatório
-    raiz = random.randint(0, (g.quantidadeVertices-1))
-    print("Vertice Inicial: " + g.N[raiz] + "\n") """
+    raiz = ModificacaoPrim(g) # Modificação
+    #raiz = random.randint(0, (g.quantidadeVertices-1)) # Vertice Aleatório (Desativar linha)
+
+    print("Vertice Inicial: " + g.N[raiz] + "\n")  
 
     mst.adiciona_vertice(g.N[raiz])
     

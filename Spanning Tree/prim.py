@@ -10,11 +10,17 @@ def Prim(g: Grafo):
         return None
     
     mst = Grafo() 
+
+    # Modificação
     raiz = ModificacaoPrim(g)
+    print("Vertice Inicial: " + g.N[raiz] + "\n")    
+
     
-    raiz = random.randint(0, g.quantidadeVertices)
-    print(raiz, g.N[raiz])
-    mst.adiciona_vertice(g.N[4])
+    """ # Vertice Aleatório
+    raiz = random.randint(0, (g.quantidadeVertices-1))
+    print("Vertice Inicial: " + g.N[raiz] + "\n") """
+
+    mst.adiciona_vertice(g.N[raiz])
     
     ligacoesValidas = [0] * g.quantidadeVertices
     for i in range(g.quantidadeVertices):

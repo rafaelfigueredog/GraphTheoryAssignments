@@ -13,7 +13,7 @@ def Prim(g: Grafo):
 
     
     raiz = ModificacaoPrim(g) # Modificação
-    #raiz = random.randint(0, (g.quantidadeVertices-1)) # Vertice Aleatório (Desativar linha)
+    raiz = random.randint(0, (g.quantidadeVertices-1)) # Vertice Aleatório (Desativar linha)
 
     print("Vertice Inicial: " + g.N[raiz] + "\n")  
 
@@ -107,6 +107,8 @@ def ModificacaoPrim(g: Grafo):
                 if pesoArestaEncontrada < menorPeso:
                     menorPeso = pesoArestaEncontrada
                     menorAresta = Vertex
+
+            
     
     return menorAresta
         

@@ -48,34 +48,40 @@ def criarMSTmodificado(g: Grafo, caixas):
     chaves.sort()
     mst = Grafo()
 
-    while (mst.quantidadeVertices != g.quantidadeVertices):
+    ok = False
+    for i in range(len(chaves)):
+
+        chave = chaves[i]
+
+        while len(caixas[chave]) != 0:
+
+            aresta = caixas[chave].pop()
+            peso = int(aresta[0])
+            aresta = aresta[1:]
+
+            v1 = aresta[0]
+            v2 = aresta[-1]
         
-        for i in range(len(chaves)):
+            arvoresDiferentes = False
 
-            chave = chaves[i]
+            if not mst.existe_vertice(v1):
+                mst.adiciona_vertice(v1)
+                arvoresDiferentes = True
 
-            while len(caixas[chave]) != 0:
-
-                aresta = caixas[chave].pop()
-                peso = int(aresta[0])
-                aresta = aresta[1:]
-
-                v1 = aresta[0]
-                v2 = aresta[-1]
+            if not mst.existe_vertice(v2):
+                mst.adiciona_vertice(v2)
+                arvoresDiferentes = True
             
-                arvoresDiferentes = False
+            if not mst.existe_aresta(aresta):
+                if (arvoresDiferentes):
+                    mst.adiciona_aresta(aresta, peso)
 
-                if not mst.existe_vertice(v1):
-                    mst.adiciona_vertice(v1)
-                    arvoresDiferentes = True
+            if (mst.quantidadeVertices == g.quantidadeVertices):
+                ok = True
+                break
 
-                if not mst.existe_vertice(v2):
-                    mst.adiciona_vertice(v2)
-                    arvoresDiferentes = True
-                
-                if not mst.existe_aresta(aresta):
-                    if (arvoresDiferentes):
-                        mst.adiciona_aresta(aresta, peso)
+        if (ok):
+            break
             
     return mst
 

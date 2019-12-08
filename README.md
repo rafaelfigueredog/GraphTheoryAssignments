@@ -1,4 +1,4 @@
-# projetoGrafos
+# Teoria dos Grafos
 Projeto Referente a Componente: Teoria dos Grafos IFPB
 
 ![Banana](https://github.com/rafaelfigueredog/Grafos/blob/master/grafo.gif)

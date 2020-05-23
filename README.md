@@ -33,11 +33,11 @@ Projeto Referente a Componente: Teoria dos Grafos IFPB
   
   - Quais os vertices nao adjacentes 
  
-  - Existe laco?
+  - Existe laço?
       
   - Existem arestas paralelas?
      
-  - grau
+  - Grau de um vertice
   
   - Arestas sobre vertice?
     
